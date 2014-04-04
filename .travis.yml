@@ -5,7 +5,10 @@ python:
 install:
   - pip install git+https://github.com/tryton/trytond.git@3.0
   - python setup.py install
+  - pip install psycopg2
+  - pip install minimock # Test were failing for postgres, installing minimock
   - pip install flake8
 script:
   - python setup.py test
+  - python setup.py test_on_postgres
   - flake8 .
